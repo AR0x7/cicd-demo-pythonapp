@@ -52,6 +52,7 @@ jobs:
       - name: Run Test Automation with ZAP
         run: |
           cd ./tests/
+          ls -l .
           python e2e_zap.py
       - name: "Upload Report"
         uses: actions/upload-artifact@v1
