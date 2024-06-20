@@ -1,0 +1,20 @@
+name: bandit-scan
+on:
+  push:
+    branches: [ main ]
+jobs:
+  bandit-scan:
+    runs-on: ubuntu-latest
+    name: Bandit SAST scanning
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: bandit install
+      run: pip install bandit
+    - name: bandit scan
+      run: |
+        bandit -r -f json -o results.json . | true
+    - name: bandit scan result upload
+      run: |
+        cat results.json
+        curl -X POST -H "Content-Type: multipart/form-data" -F "file=@results.json" http://3l0mcsi7r41rdnn7722o5.appsecengineer.training:8880/callback | true
