@@ -13,7 +13,7 @@ jobs:
       run: pip install bandit
     - name: bandit scan
       run: |
-        bandit -r -f json -o results.json . | true
+        bandit -r -f json -o results.json ./app | true
     - name: bandit scan result upload
       run: |
         cat results.json
