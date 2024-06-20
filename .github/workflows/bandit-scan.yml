@@ -1,7 +1,7 @@
 name: bandit-scan
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 jobs:
   bandit-scan:
     runs-on: ubuntu-latest
